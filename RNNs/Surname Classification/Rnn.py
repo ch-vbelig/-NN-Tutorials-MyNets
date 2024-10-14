@@ -23,8 +23,14 @@ class RNNNet(nn.Module):
         )
 
     def forward(self, x):
+        """
+        :param x: (timestep, batch, n_letters)
+        :param outs: (timestep, batch, n_hidden)
+        :param outs[-1, :, :]: (batch, n_hidden) -> last timestep
+        :param out: (batch, n_categories)
+        :return:
+        """
         outs, _ = self.rnn(x, None)
-        # last_output = outs[-1, :, :]
         out = self.out(outs[-1, :, :])
         return out
 
@@ -57,14 +63,14 @@ def category_from_output(output):
 current_loss = 0.0
 all_losses = []
 plot_steps, print_steps = 1000, 5000
-epochs = 100000
+epochs = 1
 print(next(model.parameters()).is_cuda)
 # train
 for epoch in range(epochs):
     category, line, category_tensor, line_tensor = random_training_example(category_lines, all_categories)
     line_tensor = line_tensor.to(device)
     category_tensor = category_tensor.to(device)
-
+    print(line)
     # Prediction
     output = model(line_tensor)
 

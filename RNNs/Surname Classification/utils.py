@@ -6,7 +6,7 @@ import glob
 import torch
 import random
 
-DATA_DIR = 'Surname Classification/data/names/*.txt'
+DATA_DIR = 'data/names/*.txt'
 
 # Alphabet small & capital letters & ".,;"
 # abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.,;
