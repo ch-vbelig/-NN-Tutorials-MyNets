@@ -1,0 +1,9 @@
+DATA_DIR = "./captcha_images"
+IMAGE_WIDTH = 200
+IMAGE_HEIGHT = 50
+BATCH_SIZE = 8
+NUM_WORKERS = 8
+EPOCHS = 1
+DEVICE = "cuda"
+LEARNING_RATE = 1e-3
+CHECKPOINT_FILE = "checkpoint.pth"

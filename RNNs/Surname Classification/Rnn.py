@@ -71,27 +71,28 @@ for epoch in range(epochs):
     line_tensor = line_tensor.to(device)
     category_tensor = category_tensor.to(device)
     print(line)
+    print(category_tensor)
     # Prediction
-    output = model(line_tensor)
-
-    # Loss
-    loss = criterion(output, category_tensor)
-    current_loss += loss.item()
-
-    # Update weights
-    optimizer.zero_grad()
-    loss.backward()
-    optimizer.step()
-
-    if (epoch + 1) % plot_steps == 0:
-        all_losses.append(current_loss / plot_steps)
-        current_loss = 0
-
-    if (epoch + 1) % print_steps == 0:
-        guess = category_from_output(output)
-        correct = "CORRECT" if guess == category else f"WRONG: should be {category}"
-
-        print(f"{epoch + 1}/{epochs} | Loss: {loss.item():.4f} {line} | {guess} — {correct}")
+    # output = model(line_tensor)
+    #
+    # # Loss
+    # loss = criterion(output, category_tensor)
+    # current_loss += loss.item()
+    #
+    # # Update weights
+    # optimizer.zero_grad()
+    # loss.backward()
+    # optimizer.step()
+    #
+    # if (epoch + 1) % plot_steps == 0:
+    #     all_losses.append(current_loss / plot_steps)
+    #     current_loss = 0
+    #
+    # if (epoch + 1) % print_steps == 0:
+    #     guess = category_from_output(output)
+    #     correct = "CORRECT" if guess == category else f"WRONG: should be {category}"
+    #
+    #     print(f"{epoch + 1}/{epochs} | Loss: {loss.item():.4f} {line} | {guess} — {correct}")
 
 
 
